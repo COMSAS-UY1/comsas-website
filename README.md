@@ -19,25 +19,25 @@ Save time and land directly into the important project files (settings and apps)
     `Creation/Installation`
 
         1. pip install virtualenv
-        2. virtualenv env
+        2. virtualenv .env
    
     `Activation on Windows`
     
-        3. env\Scripts\activate
+        3. .env\Scripts\activate
    
     `Activation on Linux/MacOS`
     
-        3. source env/bin/activate
+        3. source .env/bin/activate
 
     To deactivate the already activated virtual environment, simply type `deactivate` in the terminal, if not run the following command: <br>
 
     `Deactivation on Windows`
 
-        env\Scripts\deactivate
+        .env\Scripts\deactivate
 
     `Deactivation on Linux/MacOS`
 
-        source env/bin/deactivate
+        source .env/bin/deactivate
 
 4. Inside the created and activated virtual environment, `Install` the required packages from [requirements.txt](./src/comsas_website/requirements.txt) by running the command: <br>
 
