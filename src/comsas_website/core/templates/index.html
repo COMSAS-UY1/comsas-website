@@ -46,6 +46,14 @@
         <!-- Masthead-->
         <header class="masthead">
             <div class="container">
+                <!-- Output Message message (Bootstrap-v5 only) -->
+                {% for msg in messages %}
+                <div class="alert alert-{%if msg.level_tag == error %}danger{% else %}{{msg.level_tag}}{% endif %} alert-dismissible fade show" role="alert">
+                    <i class="bi bi-{%if msg.level_tag == error %}exclamation-octagon-fill{% elif msg.level_tag == info %}info-circle-fill{% elif msg.level_tag == warning %}exclamation-triangle-fill{% else %}check-circle-fill{% endif %}"></i>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    {{msg.message}}
+                </div>
+                {% endfor %}
                 <div class="masthead-subheading">Welcome To Our World!</div>
                 <div class="masthead-heading text-uppercase">Computer Science Association</div>
                 <a class="btn btn-primary btn-xl text-uppercase" href="#services">Tell Me More</a>
@@ -325,30 +333,35 @@
                     <h2 class="section-heading text-uppercase">Contact Us</h2>
                     <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
                 </div>
-                <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                <form id="contactForm" data-sb-form-api-token="API_TOKEN" method="POST" action="">
+                    {% csrf_token %}
                     <div class="row align-items-stretch mb-5">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <!-- Name input-->
-                                <input class="form-control" id="name" type="text" placeholder="Your Name *" data-sb-validations="required" />
+                                <!-- <input class="form-control" id="name" type="text" placeholder="Your Name *" data-sb-validations="required" /> -->
+                                {{form.name}}
                                 <!-- <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div> -->
                             </div>
                             <div class="form-group">
                                 <!-- Email address input-->
-                                <input class="form-control" id="email" type="email" placeholder="Your Email *" data-sb-validations="required,email" />
-                                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
+                                <!-- <input class="form-control" id="email" type="email" placeholder="Your Email *" data-sb-validations="required,email" /> -->
+                                {{form.email}}
+                                <!-- <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div> -->
                                 <!-- <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div> -->
                             </div>
                             <div class="form-group mb-md-0">
                                 <!-- Phone number input-->
-                                <input class="form-control" id="phone" type="tel" placeholder="Your Phone *" data-sb-validations="required" />
+                                <!-- <input class="form-control" id="phone" type="tel" placeholder="Your Phone *" data-sb-validations="required" /> -->
+                                {{form.phone}}
                                 <!-- <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div> -->
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group form-group-textarea mb-md-0">
                                 <!-- Message input-->
-                                <textarea class="form-control" id="message" placeholder="Your Message *" data-sb-validations="required"></textarea>
+                                <!-- <textarea class="form-control" id="message" placeholder="Your Message *" data-sb-validations="required"></textarea> -->
+                                {{form.message}}
                                 <!-- <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div> -->
                             </div>
                         </div>
