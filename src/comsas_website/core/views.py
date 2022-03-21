@@ -3,7 +3,7 @@ from django.views.generic import TemplateView
 
 
 class IndexView(TemplateView):
-    template_name = "core/index.html"
+    template_name = "index.html"
 
     # add request for getting team member
     # add request for getting all projects
