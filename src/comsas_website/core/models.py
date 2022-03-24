@@ -3,10 +3,10 @@ from django_tuieditor.models import MarkdownField
 
 class ContactRequest(models.Model):
 
-    name = models.CharField(max_length=200)
-    email = models.EmailField()
-    phone = models.CharField(max_length=200)
-    message = models.TextField()
+    name = models.CharField(max_length=200, null=False, blank=False)
+    email = models.EmailField(null=False, blank=False)
+    phone = models.CharField(max_length=200, null=False, blank=False)
+    message = models.TextField(null=False, blank=False)
     date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -36,8 +36,7 @@ class ContactAgency(models.Model):
     twitter = models.URLField(max_length=200)
     telegram = models.URLField(max_length=200)
     facebook = models.URLField(max_length=200)
-    linkedlin = models.URLField(max_length=200)
-
+    linkedin = models.URLField(max_length=200)
     github = models.URLField(max_length=200)
 
 
